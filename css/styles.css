@@ -3,7 +3,7 @@
   --accent-color: #2196f3;
   --primary-white-color: #ffffff;
   --primary-black-color: #212121;
-  --logo-black: #000000;
+  --black-color: #000000;
   --icon-color: #afb1b8;
   --text-white-opacity: rgba(255, 255, 255, 0.6);
   --button-primaty-hover: #188ce8;
@@ -87,7 +87,7 @@ address {
 }
 
 .logo-black {
-  color: var(--logo-black);
+  color: var(--black-color);
 }
 
 .logo-white {
@@ -126,6 +126,8 @@ address {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contacts-menu .contact {
@@ -143,6 +145,20 @@ address {
 .contacts-menu .contact:hover,
 .contacts-menu .contact:focus {
   color: var(--accent-color);
+}
+
+.nav-menu .page {
+  position: relative;
+}
+
+.nav-menu .page.current::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  width: 100%;
+  background-color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  border-radius: 2px;
 }
 
 .page-header {
@@ -174,6 +190,8 @@ address {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.71;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .address .item:not(:last-child) {
@@ -217,6 +235,9 @@ address {
   background-color: rgba(255, 255, 255, 0.1);
   color: var(--primary-white-color);
   border-radius: 50%;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-footer .link:hover,
@@ -247,6 +268,8 @@ address {
   line-height: 1.87;
   letter-spacing: 0.06em;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button.primary:hover,
@@ -271,6 +294,9 @@ address {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.62;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button.filter:hover,
@@ -367,6 +393,21 @@ address {
   flex-basis: calc(100% / 3 - 30px);
   margin-left: 30px;
   margin-top: 30px;
+  position: relative;
+}
+
+.what-we-do .description {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding-top: 27px;
+  padding-bottom: 27px;
+  font-weight: 700;
+  line-height: 1.14;
+  text-transform: uppercase;
+  background-color: rgba(47, 48, 58, 0.8);
+  color: var(--primary-white-color);
 }
 
 /* Team section */
@@ -449,6 +490,9 @@ address {
   background-color: var(--primary-white-color);
   color: var(--icon-color);
   border-radius: 50%;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-team .link:hover,
@@ -485,6 +529,8 @@ address {
   color: var(--icon-color);
   border: 1px solid var(--icon-color);
   border-radius: 4px;
+
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .partners .icon {
@@ -494,6 +540,67 @@ address {
 .partners .link:hover,
 .partners .link:focus {
   border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* Modal window */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 528px;
+  min-height: 581px;
+  background-color: var(--primary-white-color);
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.modal .close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: var(--primary-white-color);
+  color: var(--black-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  cursor: pointer;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal .icon {
+  fill: currentColor;
+}
+
+.modal .close:hover,
+.modal .close:focus {
   color: var(--accent-color);
 }
 
@@ -509,6 +616,8 @@ address {
   flex-basis: calc(100% / 3 - 30px);
   margin-left: 30px;
   margin-top: 30px;
+
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .projects .item:hover,
@@ -516,6 +625,70 @@ address {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
+
+.project .description {
+  position: relative;
+  overflow: hidden;
+}
+
+.project .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 150, 243, 0.9);
+  transform: translateY(101%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projects .item:hover .project .overlay {
+  transform: translateY(0);
+}
+
+.project .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 322px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--primary-white-color);
+}
+
+/* Another way to create overlay (with PseudoClass) */
+/* .project .description::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 150, 243, 0.9);
+  transform: translateY(101%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projects .item:hover .project .description::before {
+  transform: translateY(0);
+} 
+
+.project .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  width: 322px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--primary-white-color);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projects .item:hover .project .text {
+  transform: translate(-50%, -50%);
+} */
 
 .substrate {
   background-color: var(--primary-white-color);
