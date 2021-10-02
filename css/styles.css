@@ -642,7 +642,8 @@ address {
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.projects .item:hover .project .overlay {
+.projects .item:hover .project .overlay,
+.projects .item:focus .project .overlay {
   transform: translateY(0);
 }
 
